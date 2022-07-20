@@ -321,9 +321,115 @@ void loop() {
 
 * [Joystick.useManualSend()](#joystickusemanualsend)
 
-# TBD: 
 
-hat
-x y z
-position
-zrotate slider + left right 
+### `Joystick.X()`
+
+Update X axis.
+__Note:__ If [manual send](#joystickusemanualsend) is active, the value is sent to the host only after calling [send_now](#joysticksend_now).
+__Note:__ If in 10bit mode (default), the parameter is interpreted from 0 to 1023.
+In 8bit mode from -127 to 127. The internal resolution is always 8bit. Change setting with [use8bit](#joystickuse8bit).
+
+#### Syntax 
+
+```
+Joystick.X(0)
+```
+
+#### Parameters
+
+* `val`: value from 0 to 1023 (default) or -127 to 127 (8bit mode)
+
+#### Returns
+
+None.
+
+#### Example
+
+```
+#include <Joystick.h>
+
+void setup() {
+  pinMode(2, INPUT_PULLUP);
+  Joystick.begin();
+}
+
+void loop() {
+  if (digitalRead(2) == LOW) {
+	  Joystick.X(256);
+	  delay(500);
+	  Joystick.X(512);
+  }
+}
+```
+
+#### See also
+
+* [Joystick.Y()](#joysticky)
+* [Joystick.Z()](#joystickz)
+* [Joystick.Zrotate()](#joystickrotate)
+* [Joystick.slider()](#joystickslider)
+* [Joystick.sliderLeft()](#joysticksliderleft)
+* [Joystick.sliderRight()](#joysticksliderright)
+* [Joystick.send_now()](#joysticksend_now)
+* [Joystick.position()](#joystickposition)
+* [Joystick.hat()](#joystickhat)
+* [Joystick.use8bit()](#joystickuse8bit)
+* [Joystick.useManualSend()](#joystickuseManualSend)
+
+### `Joystick.Y()`
+
+Update Y axis. Please refer to [Joystick.X()](#joystickx).
+
+### `Joystick.Z()`
+
+Update Z axis. Please refer to [Joystick.X()](#joystickx).
+
+### `Joystick.Zrotate()`
+
+Update Z rotate axis. Please refer to [Joystick.X()](#joystickx).
+
+### `Joystick.sliderLeft()`
+
+Left slider value. Please refer to [Joystick.X()](#joystickx).
+
+### `Joystick.sliderRight()`
+
+Right slider value. Please refer to [Joystick.X()](#joystickx).
+
+### `Joystick.slider()`
+
+Same as [Joystick.sliderLeft()](#joysticksliderleft).
+
+### `Joystick.position()`
+
+Sets X and Y axis in one call. If autosending is active, one report is generated. Please refer to [Joystick.X()](#joystickx).
+
+#### Syntax 
+
+```
+Joystick.position(512,512)
+```
+
+#### Parameters
+
+* `X`: value from 0 to 1023 (default) or -127 to 127 (8bit mode); for X axis
+* `Y`: value from 0 to 1023 (default) or -127 to 127 (8bit mode); for Y axis
+
+#### See also
+
+* [Joystick.X()](#joystickx)
+* [Joystick.Y()](#joysticky)
+
+### `Joystick.hat()`
+
+Set the hat value to selection angle or rest position.
+
+#### Syntax 
+
+```
+Joystick.hat(-1), // released/rest position
+```
+
+#### Parameters
+
+* `angle` Angle value from 0-360 degrees or -1 for released resting position. Mapped to 8 different directions.
