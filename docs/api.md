@@ -42,7 +42,7 @@ void loop() {
 
 * [Joystick.button()](#joystickbutton)
 * [Joystick.end()](#joystickend)
-* [Joystick.send_now()](#joysticksendnow)
+* [Joystick.send_now()](#joysticksend_now)
 * [Joystick.position()](#joystickposition)
 * [Joystick.X()](#joystickx)
 * [Joystick.hat()](#joystickhat)
@@ -99,7 +99,7 @@ void loop() {
 
 #### See also
 
-* [Joystick.send_now()](#joysticksendnow)
+* [Joystick.send_now()](#joysticksend_now)
 * [Joystick.useManualSend()](#joystickuseManualSend)
 * [Joystick.X()](#joystickx)
 * [Joystick.hat()](#joystickhat)
@@ -270,7 +270,7 @@ void loop() {
 
 #### See also
 
-* [Joystick.send_now()](#joysticksendnow)
+* [Joystick.send_now()](#joysticksend_now)
 
 
 
@@ -320,108 +320,6 @@ void loop() {
 #### See also
 
 * [Joystick.useManualSend()](#joystickusemanualsend)
-
-
-### `Mouse.move()`
-
-Moves the cursor on a connected computer. The motion onscreen is always relative to the cursor’s current location. Before using `Mouse.move()` you must call `Mouse.begin()`.
-
-#### Syntax 
-
-```
-Mouse.move(xVal, yVal, wheel)
-```
-
-#### Parameters
-
-* `xVal`: amount to move along the x-axis. Allowed data types: signed char.
-* `yVal`: amount to move along the y-axis. Allowed data types: signed char.
-* `wheel`: amount to move scroll wheel. Allowed data types: signed char.
-
-#### Returns
-
-None.
-
-#### Example
-
-```
-#include <Mouse.h>
-
-const int xAxis = A1;         // Analog sensor for X axis
-const int yAxis = A2;         // Analog sensor for Y axis
-
-int range = 12;               // Output range of X or Y movement
-int responseDelay = 2;        // Response delay of the mouse, in ms
-int threshold = range / 4;    // Resting threshold
-int center = range / 2;       // Resting position value
-int minima[] = {1023, 1023};  // Actual analogRead minima for (x, y)
-int maxima[] = {0, 0};        // Actual analogRead maxima for (x, y)
-int axis[] = {xAxis, yAxis};  // Pin numbers for (x, y)
-int mouseReading[2];          // Final mouse readings for (x, y)
-
-void setup() {
-  // Initialize the Mouse library
-  Mouse.begin();
-}
-
-void loop() {
-  // Read and scale the two axes
-  int xReading = readAxis(0);
-  int yReading = readAxis(1);
-
-  // Move the mouse
-  Mouse.move(xReading, yReading, 0);
-  delay(responseDelay);
-}
-
-/*
-  Reads an axis (0 or 1 for x or y) and scales the
-  analog input range to a range from 0 to <range>
-*/
-int readAxis(int axisNumber) {
-  int distance = 0; // Distance from center of the output range
-
-  // Read the analog input
-  int reading = analogRead(axis[axisNumber]);
-
-  // Of the current reading exceeds the max or min for this axis, reset the max or min
-  if (reading < minima[axisNumber]) {
-    minima[axisNumber] = reading;
-  }
-  if (reading > maxima[axisNumber]) {
-    maxima[axisNumber] = reading;
-  }
-
-  // Map the reading from the analog input range to the output range
-  reading = map(reading, minima[axisNumber], maxima[axisNumber], 0, range);
-
-  // If the output reading is outside from the rest position threshold,  use it
-  if (abs(reading - center) > threshold) {
-    distance = (reading - center);
-  }
-
-  // The Y axis needs to be inverted in order to map the movement correctly
-  if (axisNumber == 1) {
-    distance = -distance;
-  }
-
-  // Return the distance for this axis
-  return distance;
-}
-```
-
-#### Notes and warnings
-
-When you use the `Mouse.move()` command, the Arduino takes over your mouse! Make sure you have control before you use the command. A pushbutton to toggle the mouse control state is effective.
-
-#### See also
-
-* [Mouse.begin()](#mousebegin)
-* [Mouse.click()](#mouseclick)
-* [Mouse.end()](#mouseend)
-* [Mouse.press()](#mousepress)
-* [Mouse.release()](#mouserelease)
-* [Mouse.isPressed()](#mouseispressed)
 
 # TBD: 
 
