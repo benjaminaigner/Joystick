@@ -150,6 +150,7 @@ void Joystick_::position(int X, int Y)
 //compatibility: there is only one hat implemented, num parameter is ignored
 void Joystick_::hat(unsigned int num, int angle)
 {
+	(void) num;
 	hat(angle);
 }
   
