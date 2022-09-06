@@ -39,6 +39,8 @@ public:
   
   //set a selected button to pressed/released
   void button(uint8_t button, bool val);
+  //same call as button, but "button" starts with 0
+  void setButton(uint8_t button, bool val);
   //set axis values
   void X(int val);
   void Y(int val);
