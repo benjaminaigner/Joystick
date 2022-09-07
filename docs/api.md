@@ -49,6 +49,15 @@ void loop() {
 * [Joystick.use8bit()](#joystickuse8bit)
 * [Joystick.useManualSend()](#joystickuseManualSend)
 
+### `Joystick.setButton()`
+
+Updates joystick buttons. Same functionality as
+Joystick.button(), but the button numbering starts with 0 here.
+
+#### Notes
+
+* 'button' parameter has a range of 0-31!
+
 ### `Joystick.button()`
 
 Updates a button of the USB joystick.
@@ -63,7 +72,7 @@ Joystick.button(1,false);
 
 #### Parameters
 
-* `button`: number of Joystick button, which status should be changed
+* `button`: number of Joystick button (1-32), which status should be changed
 * `val`: state of button, `true` for pressed, `false` for released
   
 #### Returns
@@ -433,3 +442,18 @@ Joystick.hat(-1), // released/rest position
 #### Parameters
 
 * `angle` Angle value from 0-360 degrees or -1 for released resting position. Mapped to 8 different directions.
+
+### `Joystick.getReport()`
+
+Get the last sent Joystick HID report. Useful when sending this report to another HID device.
+
+#### Syntax 
+
+```
+hid_gamepad_report_t data;
+Joystick.getReport(&data), // get data to our struct
+```
+
+#### Parameters
+
+* `*report` Pointer to a hid_gamepad_report_t variable.

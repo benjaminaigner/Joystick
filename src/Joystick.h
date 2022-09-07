@@ -65,6 +65,9 @@ public:
   // and are mapped internally to int8_t
   //if use8bit(true) is called, -127 to 127 values are used.
   void use8bit(bool mode);
+
+  //get the gamepad report which is sent last.
+  void getReport(hid_gamepad_report_t *report);
 };
 extern Joystick_ Joystick;
 

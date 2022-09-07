@@ -161,6 +161,12 @@ void Joystick_::hat(int angle)
 	if(angle >= 0 && angle <= 360) data.hat = map(angle,0,360,1,8);
 	if(_autosend) send_now();
 }
+
+//send back the Joystick report
+void Joystick_::getReport(hid_gamepad_report_t *report)
+{
+  memcpy(report,&data,sizeof(data));
+}
   
 //immediately send an HID report
 void Joystick_::send_now(void)
