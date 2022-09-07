@@ -18,6 +18,7 @@ use8bit		KEYWORD2
 X			KEYWORD2
 Y			KEYWORD2
 button		KEYWORD2
+setButton	KEYWORD2
 position	KEYWORD2
 Z			KEYWORD2
 Zrotate		KEYWORD2
