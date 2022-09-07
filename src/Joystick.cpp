@@ -103,10 +103,10 @@ void Joystick_::button(uint8_t button, bool val)
 	}
 }
 
-void Joystick_::setButton(uint8_t button, bool val)
+void Joystick_::setButton(uint8_t btn, bool val)
 {
   //simply call button, but we setButton uses 0-31; button 1-32
-  button(button+1, val);
+  button(btn+1, val);
 }
 
 void Joystick_::X(int val)
