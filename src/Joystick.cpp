@@ -171,7 +171,8 @@ void Joystick_::hat(unsigned int num, int angle)
 void Joystick_::hat(int angle)
 {
 	if(angle < 0) data.hat = 0;
-	if(angle >= 0 && angle <= 360) data.hat = map(angle,0,360,1,8);
+	if(angle >= 0 && angle <= 360) data.hat = map(angle,0,360,1,9);
+  if(data.hat == 9) data.hat = 0;
 	if(_autosend) send_now();
 }
 
