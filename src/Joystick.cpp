@@ -153,6 +153,13 @@ void Joystick_::position(int X, int Y)
 	if(_autosend) send_now();
 }
 
+//additional hat function to use the hat position instead of the angle
+void Joystick_::hat(HatPosition position)
+{
+  data.hat = (uint8_t) position;
+  if(_autosend) send_now();
+}
+
 //compatibility: there is only one hat implemented, num parameter is ignored
 void Joystick_::hat(unsigned int num, int angle)
 {
