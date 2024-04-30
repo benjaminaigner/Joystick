@@ -52,6 +52,10 @@ public:
   //note: not implemented in TinyUSB gamepad, is mapped to sliderLeft.
   void slider(int val);
   
+  //additional hat function to use the hat position instead of the angle
+  enum HatPosition { IDLE = 0, UP = 1, UP_RIGHT = 2, RIGHT = 3, DOWN_RIGHT = 4, DOWN = 5, DOWN_LEFT = 6, LEFT = 7, UP_LEFT = 8 };
+  void hat(HatPosition position);
+  
   //set the hat value, from 0-360. -1 is rest position
   void hat(int angle);
   //compatibility: there is only one hat implemented, num parameter is ignored

@@ -7,10 +7,12 @@ This library allows an RaspberryPi RP2040 board to act as a Joystick when
 Earle F. Philhower`s [arduino-pico](https://github.com/earlephilhower/arduino-pico)
 Core is used.
 
+
 == Acknowledgements / Credits ==
 
 * [arduino-pico](https://github.com/earlephilhower/arduino-pico) Earle F. Philhower providing the Arduino Core, on which this library is based on, available under LGPL.
 * [tinyUSB] (https://github.com/hathach/tinyusb) Ha Thach for providing tinyUSB under MIT license, which covers most of the USB functionality.
+* [tommybee456] For pointing out a hat mapping error & the suggestion to use an enum for the hat
 
 
 == License ==

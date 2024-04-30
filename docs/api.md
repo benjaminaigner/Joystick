@@ -429,7 +429,7 @@ Joystick.position(512,512)
 * [Joystick.X()](#joystickx)
 * [Joystick.Y()](#joysticky)
 
-### `Joystick.hat()`
+### `Joystick.hat(int angle)`
 
 Set the hat value to selection angle or rest position.
 
@@ -437,6 +437,31 @@ Set the hat value to selection angle or rest position.
 
 ```
 Joystick.hat(-1), // released/rest position
+```
+
+#### Parameters
+
+* `angle` Angle value from 0-360 degrees or -1 for released resting position. Mapped to 8 different directions.
+
+
+### `Joystick.hat(HatPosition position)`
+
+Set the hat value to a selected direction:
+* Joystick_::IDLE
+* Joystick_::UP
+* Joystick_::UP_RIGHT
+* Joystick_::RIGHT
+* Joystick_::DOWN_RIGHT
+* Joystick_::DOWN
+* Joystick_::DOWN_LEFT
+* Joystick_::LEFT
+* Joystick_::UP_LEFT
+
+#### Syntax 
+
+```
+Joystick.hat(Joystick_::IDLE), // released/rest position
+Joystick.hat(Joystick_::UP_RIGHT), // released/rest position
 ```
 
 #### Parameters
