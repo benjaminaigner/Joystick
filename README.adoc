@@ -3,9 +3,8 @@
 
 = {repository-name} Library for Arduino (RP2040 based boards) =
 
-This library allows an RaspberryPi RP2040 board to act as a Joystick when
-Earle F. Philhower`s [arduino-pico](https://github.com/earlephilhower/arduino-pico)
-Core is used.
+This library is used in Earle F. Philhower`s [arduino-pico](https://github.com/earlephilhower/arduino-pico)
+Arduino Pico core and provides Joystick functionality
 
 
 == Acknowledgements / Credits ==
